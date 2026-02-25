@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Product Details</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 30px;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        .box {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px dashed #999;
+            background-color: #f9f9f9;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1 th:text="${product.name}"></h1>
+
+<div class="box">
+    <p><strong>🚧 Site Under Construction 🚧</strong></p>
+    <p>
+        Detailed product information will be available soon.
+        Thank you for your patience!
+    </p>
+</div>
+
+<a href="/products">← Back to Products</a>
+
+</body>
+</html>
