@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spring Boot Demo</title>
+</head>
+<body>
+
+<h2 style="color:red">Spring Boot Hello Demo</h2>
+
+<h3>Available Plots</h3>
+
+<ul id="plotsList"></ul>
+
+<button onclick="loadPlots()">Load Plots</button>
+<br><br>
+
+<button onclick="callHello()">Say Hello</button>
+<button onclick="callWelcome()">Say Welcome</button>
+<button onclick="callBye()">Say Bye</button>
+
+<p id="result"></p>
+
+<script>
+
+    // ✅ Load plots from backend
+    function loadPlots(){
+        fetch('/plots')
+        .then(res => res.json())
+        .then(data => {
+
+            let html = "";
+
+            data.forEach(p => {
+                html += `
+                    <li>
+                        Plot: ${p.plot_no},
+                        Facing: ${p.facing}
+                    </li>
+                `;
+            });
+
+            document.getElementById("plotsList").innerHTML = html;
+        });
+    }
+
+    function callHello() {
+        fetch('/hello')
+            .then(res => res.text())
+            .then(data => document.getElementById('result').innerText = data);
+    }
+
+    function callWelcome() {
+        fetch('/welcome')
+            .then(res => res.text())
+            .then(data => document.getElementById('result').innerText = data);
+    }
+    
+    function callBye(){
+        fetch('/bye')
+        .then(res => res.text())
+        .then(data => document.getElementById('result').innerText = data);
+    }
+
+</script>
+
+</body>
+</html>
